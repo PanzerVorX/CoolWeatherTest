@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--天气碎片3布局-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <!--背景视图-->
+    <ImageView
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+        <!--下拉刷新布局-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--视图内容超过屏幕考虑将总布局添加到滑动控件中-->
+            <!--设置滚动条的显示：scrollbars属性，none/horizontal/vertical 隐藏/水平/垂直 -->
+            <!--设置滚动条滑动到边缘时的阴影显示：overScrollMode属性，always/never/ifContentScrolls 显示/不显示/ -->
+            <ScrollView
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <!--天气组合布局-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--引入各部分布局-->
+                    <include layout="@layout/other_fragment_title"/><!--天气的头布局-->
+                    <include layout="@layout/now"/><!--当前天气布局-->
+                    <include layout="@layout/forecast"/><!--未来天气布局-->
+                    <include layout="@layout/aqi"/><!--空气质量布局-->
+                    <include layout="@layout/suggestion"/><!--当前天气相关生活建议布局-->
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
